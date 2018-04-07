@@ -27,4 +27,15 @@ public class PieceTest {
     assertTrue(killedPieces.contains(DeadPieces.DEFENDER));
   }
 
+  @Test
+  public void shouldGiveMarshalAsDeadPieceWhenMarshalAttackOnBomb() {
+    ArrayList killedPieces = Piece.BOMB.attackedBy(Piece.MARSHAL);
+    assertTrue(killedPieces.contains(DeadPieces.ATTACKER));
+  }
+
+  @Test
+  public void shouldGiveBombAsDeadPieceWhenMinerAttackOnBomb() {
+    ArrayList killedPieces = Piece.BOMB.attackedBy(Piece.MINER);
+    assertTrue(killedPieces.contains(DeadPieces.DEFENDER));
+  }
 }
