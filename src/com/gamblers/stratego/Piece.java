@@ -3,7 +3,20 @@ package com.gamblers.stratego;
 import java.util.ArrayList;
 
 public enum Piece {
-  MARSHAL(10),MINER(3), BOMB(0){
+  MARSHAL(10){
+    @Override
+    public ArrayList<DeadPieces> attackedBy(Piece piece) {
+      ArrayList<DeadPieces> killedPieces = new ArrayList<>();
+      if(piece.equals(SPY)) {
+        killedPieces.add(DeadPieces.DEFENDER);
+      } else {
+        killedPieces.add(DeadPieces.ATTACKER);
+      }
+      return killedPieces;
+    }
+  },
+  MINER(3),
+  BOMB(0){
     @Override
     public ArrayList<DeadPieces> attackedBy(Piece piece) {
       ArrayList<DeadPieces> killedPieces = new ArrayList<>();
@@ -14,13 +27,13 @@ public enum Piece {
       }
       return killedPieces;
     }
-  };
+  },
+  SPY(1);
 
 
   private final int rank;
 
   Piece(int rank) {
-
     this.rank = rank;
   }
 

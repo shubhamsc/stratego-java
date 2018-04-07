@@ -38,4 +38,10 @@ public class PieceTest {
     ArrayList killedPieces = Piece.BOMB.attackedBy(Piece.MINER);
     assertTrue(killedPieces.contains(DeadPieces.DEFENDER));
   }
+
+  @Test
+  public void shouldGiveMarshalAsDeadPieceWhenSpyAttackOnMarshal() {
+    ArrayList killedPieces = Piece.MARSHAL.attackedBy(Piece.SPY);
+    assertTrue(killedPieces.contains(DeadPieces.DEFENDER));
+  }
 }
